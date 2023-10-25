@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "983652194517",
+    "project_id": "smarttracker-f5bf9",
+    "storage_bucket": "smarttracker-f5bf9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983652194517:android:b5fc02b84c4da1d89aaa5c",
+        "android_client_info": {
+          "package_name": "com.example.smarttracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983652194517-gcbedousvki8v3qik9346a760oc18cgi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smarttracker",
+            "certificate_hash": "e8447e2c69caa07a5e316e7bf42592664e8e08b5"
+          }
+        },
+        {
+          "client_id": "983652194517-npsmtsupn04qm1e4r30g1g2l2g1nb60i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGtMwYVJ0q4uAibfD_bZzIaFIK63gTlG4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983652194517-npsmtsupn04qm1e4r30g1g2l2g1nb60i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
