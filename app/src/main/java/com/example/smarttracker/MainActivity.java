@@ -1,43 +1,55 @@
 package com.example.smarttracker;
 
-import static com.google.firebase.auth.FirebaseAuth.*;
+import static com.google.firebase.auth.FirebaseAuth.getInstance;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.WindowCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.smarttracker.fragments.DailyTaskFragment;
-import com.example.smarttracker.fragments.HomeFragment;
-import com.example.smarttracker.fragments.ProfileFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.WindowCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.smarttracker.Adapters.CategoryAdapter;
+import com.example.smarttracker.Adapters.TaskAdapter;
+import com.example.smarttracker.Model.CategoryModel;
+import com.example.smarttracker.Model.TaskModel;
+import com.example.smarttracker.Utils.DatabaseHandler;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DialogCloseListener{
 
     Toolbar Toolbar;
     TextView Username;
     TextView Email;
     ImageView profile;
-    FrameLayout frameLayout;
-    BottomNavigationView bottomNavigationView;
+    private RecyclerView tasksRecyclerView;
+    private RecyclerView categoryRecyclerView;
+    private TaskAdapter taskAdapter;
+    private FloatingActionButton fab;
+    private DatabaseHandler dbHandler;
+    private List<TaskModel> tasklist;
+    private CategoryAdapter categoryAdapter;
+    private List<CategoryModel> categorylist;
+
 
 
     @Override
@@ -47,13 +59,12 @@ public class MainActivity extends AppCompatActivity {
         WindowCompat.setDecorFitsSystemWindows(getWindow(),false);
         Toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(Toolbar);
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
         Username = findViewById(R.id.username);
         Email = findViewById(R.id.email_toolbar);
         profile = findViewById(R.id.default_icon);
-
         Username.setText(getInstance().getCurrentUser().getDisplayName());
         Email.setText(getInstance().getCurrentUser().getEmail());
+
 
         Toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,21 +73,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+        dbHandler = new DatabaseHandler(this);
+        dbHandler.open();
+
+        tasklist = new ArrayList<>();
+        tasksRecyclerView = findViewById(R.id.tasksRecyclerView);
+        categoryRecyclerView=findViewById(R.id.categoryRecyclerView);
+        categoryRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        categoryAdapter = new CategoryAdapter(dbHandler,this);
+        tasksRecyclerView.setLayoutManager((new LinearLayoutManager(this)));
+        taskAdapter = new TaskAdapter(dbHandler,this);
+        categoryRecyclerView.setAdapter(categoryAdapter);
+        tasksRecyclerView.setAdapter(taskAdapter);
+        fab =findViewById(R.id.fab);
+        categorylist = dbHandler.getAllCategories(null);
+        categoryAdapter.setcategory(categorylist);
+        tasklist = dbHandler.getAllTasks(null);
+        taskAdapter.setTasks(tasklist);
+        ItemTouchHelper itemTouchHelper = new
+                ItemTouchHelper(new TaskRecyclerItemTouchHelper(taskAdapter));
+        itemTouchHelper.attachToRecyclerView(tasksRecyclerView);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int NavId = item.getItemId();
-                if(NavId==R.id.btmbar_Task){
-                    LoadFrag(new HomeFragment(), true);
-                } else if (NavId==R.id.btmbar_dailytask) {
-                    LoadFrag(new DailyTaskFragment(), false);
-                } else if (NavId==R.id.btmbar_profile) {
-                    LoadFrag(new ProfileFragment(), false);
-                }
-                return true;
+            public void onClick(View v) {
+                AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG);
             }
         });
-        bottomNavigationView.setSelectedItemId(R.id.btmbar_Task);
 
     }
 
@@ -108,19 +130,33 @@ public class MainActivity extends AppCompatActivity {
                 }
         });
         bottomSheetDialog.show();
+
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (dbHandler != null) {
+            dbHandler.close(); // Close the database when the activity is destroyed
+        }
     }
     private void logout() {
         getInstance().signOut();
         startActivity(new Intent(MainActivity.this,Login.class));
         finish();
     }
-    public void LoadFrag(Fragment fragment, boolean btmFlag){
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        if(btmFlag==true)
-            ft.add(R.id.FrameContainer , fragment);
-        else
-            ft.replace(R.id.FrameContainer , fragment);
-        ft.commit();
+
+    @Override
+    public void handleDialogClose(DialogInterface dialog) {
+        tasklist = dbHandler.getAllTasks(null);
+        categorylist = dbHandler.getAllCategories(null);
+        Collections.reverse(tasklist);
+        categoryAdapter.setcategory(categorylist);
+        taskAdapter.setTasks(tasklist);
+        categoryAdapter.notifyDataSetChanged();
+        taskAdapter.notifyDataSetChanged();
+        Log.d("HomeFragment", "handleDialogClose: Dialog closed, data updated");
     }
+
+
 }

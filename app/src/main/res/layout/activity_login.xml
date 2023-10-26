@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#000000"
+    android:background="#FAFAFA"
     android:padding="30dp"
     android:layout_height="match_parent"
     tools:context=".Login">
@@ -83,7 +83,7 @@
                 android:layout_height="50dp"
                 android:background="@color/white"
                 android:text="LOGIN"
-                android:textColor="@color/black"
+                android:textColor="@color/colorAccent"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -9,8 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.smarttracker.MainActivity;
 import com.example.smarttracker.Model.CategoryModel;
-import com.example.smarttracker.Model.TaskModel;
 import com.example.smarttracker.R;
 import com.example.smarttracker.Utils.DatabaseHandler;
 
@@ -20,10 +20,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     private List<CategoryModel> categorylist;
     private DatabaseHandler db;
     private Context context;
+    private MainActivity activity;
 
-    public CategoryAdapter(DatabaseHandler db, Context context){
+    public CategoryAdapter(DatabaseHandler db,MainActivity activity){
         this.db=db;
-        this.context=context;
+        this.activity=activity;
     }
     @NonNull
     @Override
@@ -45,7 +46,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         return categorylist.size();
     }
     public Context getContext() {
-        return context;
+        return activity;
     }
     public void setcategory(List<CategoryModel> categorylist){
         this.categorylist=categorylist;

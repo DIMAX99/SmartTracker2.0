@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\mipmap-xxxhdpi\\ic_launcher_foreground.webp"
+    },
+    {
         "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
@@ -72,6 +76,10 @@
         "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\drawable\\ic_launcher_foreground.xml"
     },
     {
+        "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\mipmap-xxhdpi\\ic_launcher_foreground.webp"
+    },
+    {
         "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
@@ -84,12 +92,12 @@
         "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\drawable_edit_task_icon.xml.flat",
-        "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\drawable\\edit_task_icon.xml"
+        "merged": "com.example.smarttracker.app-merged_res-37:/layout_taskadd_bottom_sheet.xml.flat",
+        "source": "com.example.smarttracker.app-main-39:/layout/taskadd_bottom_sheet.xml"
     },
     {
-        "merged": "com.example.smarttracker.app-merged_res-37:/layout_activity_main.xml.flat",
-        "source": "com.example.smarttracker.app-main-39:/layout/activity_main.xml"
+        "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\drawable_edit_task_icon.xml.flat",
+        "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\drawable\\edit_task_icon.xml"
     },
     {
         "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\mipmap-xhdpi_ic_launcher.webp.flat",
@@ -100,12 +108,20 @@
         "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\drawable\\ic_launcher_background.xml"
     },
     {
+        "merged": "com.example.smarttracker.app-merged_res-37:/layout_bottom_sheet_layout.xml.flat",
+        "source": "com.example.smarttracker.app-main-39:/layout/bottom_sheet_layout.xml"
+    },
+    {
         "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\drawable_settings.png.flat",
         "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\drawable\\settings.png"
     },
     {
         "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\mipmap-mdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\mipmap-mdpi\\ic_launcher_foreground.webp"
     },
     {
         "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\layout_bottom_sheet_layout.xml.flat",
@@ -116,16 +132,20 @@
         "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\drawable\\google_signin.xml"
     },
     {
-        "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\layout_fragment_home.xml.flat",
-        "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\layout\\fragment_home.xml"
-    },
-    {
         "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\layout_fragment_home.xml.flat",
+        "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\layout\\fragment_home.xml"
+    },
+    {
         "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\drawable_set_time_icon.xml.flat",
         "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\drawable\\set_time_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\mipmap-hdpi\\ic_launcher_foreground.webp"
     },
     {
         "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\drawable_app_icon.png.flat",
@@ -144,12 +164,12 @@
         "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\drawable\\login_details.xml"
     },
     {
-        "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\drawable_category_drawable.xml.flat",
-        "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\drawable\\category_drawable.xml"
-    },
-    {
         "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\layout_fragment_daily_task.xml.flat",
         "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\layout\\fragment_daily_task.xml"
+    },
+    {
+        "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\drawable_category_drawable.xml.flat",
+        "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\drawable\\category_drawable.xml"
     },
     {
         "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\layout_category_layout.xml.flat",
@@ -164,12 +184,12 @@
         "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\layout\\fragment_profile.xml"
     },
     {
-        "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\drawable_question.png.flat",
-        "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\drawable\\question.png"
-    },
-    {
         "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\layout_activity_login.xml.flat",
         "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\drawable_question.png.flat",
+        "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\drawable\\question.png"
     },
     {
         "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\drawable_login_password.xml.flat",
@@ -202,6 +222,10 @@
     {
         "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\drawable_login_page.xml.flat",
         "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\drawable\\login_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-main-39:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
     },
     {
         "merged": "C:\\Users\\divit\\.gradle\\daemon\\8.0\\com.example.smarttracker.app-merged_res-37:\\drawable_default_icon_profile.png.flat",

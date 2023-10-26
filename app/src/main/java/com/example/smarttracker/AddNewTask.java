@@ -12,26 +12,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.LiveData;
+import androidx.fragment.app.Fragment;
 
-import com.example.smarttracker.Adapters.TaskAdapter;
-import com.example.smarttracker.Model.CategoryModel;
 import com.example.smarttracker.Model.TaskModel;
 import com.example.smarttracker.Utils.DatabaseHandler;
-import com.example.smarttracker.fragments.HomeFragment;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
 public class AddNewTask extends BottomSheetDialogFragment {
@@ -183,8 +177,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
     @Override
     public void onDismiss(DialogInterface dialog){
         Activity activity = getActivity();
-        FragmentActivity homeFragment = requireActivity();
-        FragmentActivity fragment = getActivity();
+        Fragment homeFragment = getParentFragment();
+
         Context context = getContext();
         if(homeFragment instanceof DialogCloseListener){
             ((DialogCloseListener)homeFragment).handleDialogClose(dialog);
@@ -193,5 +187,4 @@ public class AddNewTask extends BottomSheetDialogFragment {
             ((DialogCloseListener)activity).handleDialogClose(dialog);
         }
     }
-
 }

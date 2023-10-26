@@ -39,11 +39,9 @@ drawable question
 drawable set_time_icon
 drawable settings
 id Category
-id FrameContainer
 id Set_Date
 id Set_Time
 id SplashAnim
-id bottom_navigation
 id btm_Logout_btn
 id btm_dialog_email
 id btmbar_Task
@@ -86,6 +84,7 @@ layout taskadd_bottom_sheet
 menu bottom_navigation_menu
 menu toolbar_optmenu
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 raw splash_anim
 string add_task

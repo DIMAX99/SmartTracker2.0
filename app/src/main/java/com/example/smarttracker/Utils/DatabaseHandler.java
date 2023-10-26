@@ -9,8 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 
 import androidx.annotation.Nullable;
-import androidx.lifecycle.LiveData;
-import androidx.room.Dao;
 
 import com.example.smarttracker.Model.CategoryModel;
 import com.example.smarttracker.Model.TaskModel;
@@ -287,5 +285,6 @@ public class DatabaseHandler{
 
         return isEmpty;
     }
+
 
 }

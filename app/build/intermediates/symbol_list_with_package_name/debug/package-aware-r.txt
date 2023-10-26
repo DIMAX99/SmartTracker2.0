@@ -3108,7 +3108,6 @@ id BOTTOM_START
 id CTRL
 id Category
 id FUNCTION
-id FrameContainer
 id META
 id NO_DEBUG
 id SHIFT
@@ -3204,7 +3203,6 @@ id beginning
 id bestChoice
 id blocking
 id bottom
-id bottom_navigation
 id bounce
 id bounceBoth
 id bounceEnd
@@ -3857,6 +3855,7 @@ layout taskadd_bottom_sheet
 menu bottom_navigation_menu
 menu toolbar_optmenu
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 raw firebase_common_keep
