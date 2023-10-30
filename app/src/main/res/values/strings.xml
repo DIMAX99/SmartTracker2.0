@@ -7,4 +7,11 @@
     <string name="user1_gmail_com">user1@gmail.com</string>
     <string name="user1">User1</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_date">Add date</string>
+    <string name="set_date">Set Date</string>
+    <string name="task_category">Task Category</string>
+    <string name="space" />
+    <string name="set_time">Set Time</string>
+    <string name="task_title">Task Title</string>
+    <string name="task_name">Task Name</string>
 </resources>

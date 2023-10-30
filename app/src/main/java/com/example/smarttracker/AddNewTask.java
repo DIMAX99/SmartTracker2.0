@@ -36,7 +36,9 @@ public class AddNewTask extends BottomSheetDialogFragment {
     private Button SetTime;
     private Button AddTask;
     private DatabaseHandler dbHandler;
-   private TextView showdate;
+    private long taskId = -1;
+
+    private TextView showdate;
    private TextView showtime;
     private String finalDate;
     private String finalTime;
@@ -58,7 +60,6 @@ public class AddNewTask extends BottomSheetDialogFragment {
         View view = inflater.inflate(R.layout.taskadd_bottom_sheet, container, false);
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         return view;
-
     }
 
     @Override
@@ -71,7 +72,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
         showdate = view.findViewById(R.id.showdate);
         showtime = view.findViewById(R.id.showtime);
         AddTask = view.findViewById(R.id.newTaskButton);
-        boolean isUpdate = false;
+
+
 
         SetDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +88,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
             }
         });
 
+
         AddTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,14 +97,17 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 String Date = finalDate.toString();
                 String Time = finalTime.toString();
 
-                TaskModel newTask = new TaskModel();
-                newTask.setName(TaskName);
-                newTask.setDate(Date);
-                newTask.setTime(Time);
-                newTask.setStatus(0);
+
+                    TaskModel newTask = new TaskModel();
+
+                    newTask.setName(TaskName);
+                    newTask.setDate(Date);
+                    newTask.setTime(Time);
+                    newTask.setStatus(0);
 
 
-                dbHandler.addTask(newTask, TaskCategory);
+                    dbHandler.addTask(newTask, TaskCategory);
+
                 Log.d("taskadded","done");
                 dismiss();
             }

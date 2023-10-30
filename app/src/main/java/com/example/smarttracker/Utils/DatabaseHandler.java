@@ -1,28 +1,43 @@
 package com.example.smarttracker.Utils;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 import com.example.smarttracker.Model.CategoryModel;
 import com.example.smarttracker.Model.TaskModel;
+import com.example.smarttracker.TaskReminderBroadcastReceiver;
 import com.example.smarttracker.taskparams.TaskParams;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class DatabaseHandler{
     private SQLiteDatabase database;
     private TaskParams dbHelper;
+    private Context context;
+
 
     public DatabaseHandler(@Nullable Context context) {
+        this.context=context;
         dbHelper = new TaskParams(context);
+
     }
     public void open() throws SQLException {
         database = dbHelper.getWritableDatabase();
@@ -52,7 +67,62 @@ public class DatabaseHandler{
             cursor.close();
         }
         cv.put(TaskParams.TASK_COLUMN_STATUS, 0);
-        return database.insert(TaskParams.TASK_TABLE_NAME, null, cv);
+        long taskId = database.insert(TaskParams.TASK_TABLE_NAME, null, cv);
+        if(taskId!=-1){
+            scheduleTaskReminder(taskId, Task.getName(), Task.getDate(), Task.getTime(), 30);
+        }
+        return taskId;
+    }
+    // Schedule a reminder for a specific task
+    private void scheduleTaskReminder(long taskId, String taskName, String date, String time, int minutesBeforeReminder) {
+        SimpleDateFormat dateTimeSdf = new SimpleDateFormat("yyyy-MM-dd hh:mm a", Locale.ENGLISH);
+
+        try {
+            Date dateTimeObj = dateTimeSdf.parse(date + " " + time);
+
+            Calendar taskDateTime = Calendar.getInstance();
+            taskDateTime.setTime(dateTimeObj);
+
+            Calendar currentTime = Calendar.getInstance();
+            long reminderTime;
+
+            // Calculate the reminder time 30 minutes before the task
+            Calendar reminderTimeBefore = Calendar.getInstance();
+            reminderTimeBefore.setTime(taskDateTime.getTime());
+            reminderTimeBefore.add(Calendar.MINUTE, -minutesBeforeReminder);
+
+            if (taskDateTime.before(currentTime)) {
+                // Task date and time is in the past, schedule the reminder immediately
+                reminderTime = currentTime.getTimeInMillis();
+            } else if (reminderTimeBefore.before(currentTime)) {
+                // Task date and time is within the next 30 minutes, schedule the reminder at the exact task date and time
+                reminderTime = taskDateTime.getTimeInMillis();
+            } else {
+                // Task date and time is more than 30 minutes in the future, schedule the reminder 30 minutes before
+                reminderTime = reminderTimeBefore.getTimeInMillis();
+            }
+
+            // Create a PendingIntent for the reminder
+            Intent intent = new Intent(context, TaskReminderBroadcastReceiver.class);
+            intent.putExtra("task_name", taskName);
+
+            PendingIntent pendingIntent;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                // Android 12 and above
+                pendingIntent = PendingIntent.getBroadcast(context, (int) taskId, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+            } else {
+                // Android 11 and lower
+                pendingIntent = PendingIntent.getBroadcast(context, (int) taskId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            }
+
+            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            Log.d("set alarm", " done");
+
+            // Schedule the reminder
+            alarmManager.set(AlarmManager.RTC_WAKEUP, reminderTime, pendingIntent);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
     //retrieve task from the database
     public List<TaskModel> getAllTasks() {
@@ -216,21 +286,20 @@ public class DatabaseHandler{
         database.beginTransaction();
 
         try {
+            // Step 3: Check if there are any tasks left in the category associated with the deleted task
+            long categoryId = getTaskCategoryId(taskId);
             // Step 2: Delete the task with the given ID from the task table
             String whereClause = TaskParams.TASK_COLUMN_ID + "=?";
             String[] whereArgs = {String.valueOf(taskId)};
             database.delete(TaskParams.TASK_TABLE_NAME, whereClause, whereArgs);
-
-            // Step 3: Check if there are any tasks left in the category associated with the deleted task
-            long categoryId = getTaskCategoryId(taskId);
             boolean isCategoryEmpty = isCategoryEmpty(categoryId);
 
             // Step 4: If there are no tasks left in the category, delete the category
-            if (isCategoryEmpty) {
-                whereClause = TaskParams.COLUMN_CATEGORY_ID + "=?";
-                whereArgs = new String[]{String.valueOf(categoryId)};
-                database.delete(TaskParams.CATEGORY_TABLE_NAME, whereClause, whereArgs);
-            }
+                if(isCategoryEmpty) {
+                    whereClause = TaskParams.COLUMN_CATEGORY_ID + "=?";
+                    whereArgs = new String[]{String.valueOf(categoryId)};
+                    database.delete(TaskParams.CATEGORY_TABLE_NAME, whereClause, whereArgs);
+                }
 
             // Step 5: End the transaction on the database
             database.setTransactionSuccessful();
@@ -288,3 +357,4 @@ public class DatabaseHandler{
 
 
 }
+

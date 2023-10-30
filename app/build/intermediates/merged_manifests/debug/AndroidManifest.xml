@@ -51,7 +51,7 @@
             android:name="com.example.smarttracker.MainActivity"
             android:exported="false" />
 
-        <receiver android:name="com.example.smarttracker.AlarmReceiver" />
+        <receiver android:name="com.example.smarttracker.TaskReminderBroadcastReceiver" />
 
         <service
             android:name="com.google.firebase.components.ComponentDiscoveryService"

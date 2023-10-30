@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="appblue">#44B8D1</color>
     <color name="backgroundColor">#FFFFFF</color>
-    <color name="black">#F8F8F8</color>
+    <color name="black">#000000</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
@@ -11,6 +12,7 @@
     <color name="textColorPrimary">#333333</color>
     <color name="textColorSecondary">#666666</color>
     <color name="white">#FFFFFFFF</color>
+    <string name="add_date">Add date</string>
     <string name="add_task">add task</string>
     <string name="app_name">SmartTracker</string>
     <string name="default_web_client_id" translatable="false">983652194517-npsmtsupn04qm1e4r30g1g2l2g1nb60i.apps.googleusercontent.com</string>
@@ -22,12 +24,20 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile_icon">Profile icon</string>
     <string name="project_id" translatable="false">smarttracker-f5bf9</string>
+    <string name="set_date">Set Date</string>
+    <string name="set_time">Set Time</string>
+    <string name="space"/>
+    <string name="task_category">Task Category</string>
+    <string name="task_name">Task Name</string>
+    <string name="task_title">Task Title</string>
     <string name="user1">User1</string>
     <string name="user1_gmail_com">user1@gmail.com</string>
     <string name="welcome_to_smarttracker">Welcome to SmartTracker!</string>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
+        <item name="android:statusBarColor">#000000</item>
+        <item name="android:fontFamily">@font/robotomono_regular</item>
     </style>
     <style name="Base.Theme.SmartTracker" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowTranslucentStatus">
@@ -35,9 +45,9 @@
         </item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
-        <item name="android:statusBarColor">
-            @android:color/transparent
-        </item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowLightStatusBar">true</item>
         
         
     </style>

@@ -53,6 +53,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         notifyDataSetChanged();
     }
 
+    public void updateCategories() {
+        categorylist.clear();
+        categorylist.addAll(db.getAllCategories());
+        notifyDataSetChanged();
+
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder{
         TextView category;
         ViewHolder(View view){

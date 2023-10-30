@@ -12,7 +12,7 @@
     android:layout_marginVertical="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp">
 
@@ -20,12 +20,70 @@
             android:id="@+id/todoCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#0175AA"
+            android:fontFamily="@font/robotomono_regular"
             android:paddingStart="10dp"
+            android:textSize="17sp"
+            android:textColor="#0175AA"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tool:text="this is a sample task"
-            tool:ignore="RtlSymmetry" />
+            tool:ignore="RtlSymmetry"
+            tool:text="this is a sample task" />
+        <TextView
+            android:id="@+id/tasktime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="time"
+            android:textSize="15sp"
+            android:fontFamily="@font/robotomono_regular"
+            android:textColor="@color/black"
+            android:layout_marginStart="43dp"
+            app:layout_constraintTop_toBottomOf="@id/todoCheckBox"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/taskday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wed"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/taskdate"
+            app:layout_constraintStart_toStartOf="@+id/taskdate"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/taskdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/robotomono_regular"
+            android:text="05"
+            android:textColor="@color/appblue"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/taskday" />
+
+        <TextView
+            android:id="@+id/taskmonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/robotomono_regular"
+            android:text="Dec"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/taskdate"
+            app:layout_constraintStart_toStartOf="@+id/taskdate"
+            app:layout_constraintTop_toBottomOf="@id/taskdate" />
+        <TextView
+            android:id="@+id/taskstatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/taskmonth"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Upcoming"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/appblue"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

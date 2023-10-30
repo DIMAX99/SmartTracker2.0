@@ -1359,6 +1359,7 @@ color accent_material_dark
 color accent_material_light
 color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
+color appblue
 color backgroundColor
 color background_floating_material_dark
 color background_floating_material_light
@@ -2954,6 +2955,8 @@ drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable add_floatingbtn
+drawable adddd
+drawable addtask_button
 drawable app_icon
 drawable app_name
 drawable avd_hide_password
@@ -2992,6 +2995,7 @@ drawable common_google_signin_btn_text_light
 drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
+drawable datetimebtn
 drawable default_icon_profile
 drawable default_profile_icon
 drawable delete_task_icon
@@ -3001,6 +3005,7 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable edit_task_icon
+drawable floatingbtn_back
 drawable google_signin
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
@@ -3024,6 +3029,7 @@ drawable login_page
 drawable login_page_appname
 drawable login_password
 drawable login_username
+drawable logoutbutton_bottom
 drawable m3_appbar_background
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3099,14 +3105,19 @@ drawable question
 drawable selection_band_overlay
 drawable set_time_icon
 drawable settings
+drawable taskdetails
+drawable test
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+font robotomono_regular
+font robotomono_semibold
 id ALT
 id BOTTOM_END
 id BOTTOM_START
 id CTRL
 id Category
+id Categoryhint
 id FUNCTION
 id META
 id NO_DEBUG
@@ -3120,6 +3131,7 @@ id Set_Time
 id SplashAnim
 id TOP_END
 id TOP_START
+id Tasknamehint
 id accelerate
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -3177,6 +3189,8 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addimageview
+id addtaskdes1
 id adjust_height
 id adjust_width
 id alertTitle
@@ -3214,6 +3228,7 @@ id browser_actions_menu_items
 id browser_actions_menu_view
 id btm_Logout_btn
 id btm_dialog_email
+id btm_profilename
 id btmbar_Task
 id btmbar_dailytask
 id btmbar_profile
@@ -3349,6 +3364,8 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageView
+id imageView2
 id immediateStop
 id included
 id indeterminate
@@ -3588,7 +3605,12 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
+id taskdate
+id taskday
+id taskmonth
 id tasksRecyclerView
+id taskstatus
+id tasktime
 id text
 id text2
 id textEnd
@@ -3598,6 +3620,7 @@ id textStart
 id textTop
 id textView
 id textView2
+id textView3
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3786,9 +3809,6 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
-layout fragment_daily_task
-layout fragment_home
-layout fragment_profile
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -3852,6 +3872,7 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 layout task_layout
 layout taskadd_bottom_sheet
+layout updatetask_bottomsheet
 menu bottom_navigation_menu
 menu toolbar_optmenu
 mipmap ic_launcher
@@ -3887,6 +3908,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string add_date
 string add_task
 string androidx_startup
 string app_name
@@ -4048,9 +4070,15 @@ string search_menu_title
 string searchbar_scrolling_view_behavior
 string searchview_clear_text_content_description
 string searchview_navigation_content_description
+string set_date
+string set_time
 string side_sheet_accessibility_pane_title
 string side_sheet_behavior
+string space
 string status_bar_notification_info_overflow
+string task_category
+string task_name
+string task_title
 string user1
 string user1_gmail_com
 string welcome_to_smarttracker

@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
     private List<CategoryModel> categorylist;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
         categoryRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         categoryAdapter = new CategoryAdapter(dbHandler,this);
         tasksRecyclerView.setLayoutManager((new LinearLayoutManager(this)));
-        taskAdapter = new TaskAdapter(dbHandler,this);
+        taskAdapter = new TaskAdapter(dbHandler,this,categoryAdapter);
         categoryRecyclerView.setAdapter(categoryAdapter);
         tasksRecyclerView.setAdapter(taskAdapter);
         fab =findViewById(R.id.fab);
@@ -119,8 +118,12 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
         // Find views within the BottomSheetLayout
         TextView emailTextView = bottomSheetDialog.findViewById(R.id.btm_dialog_email);
         Button logoutButton = bottomSheetDialog.findViewById(R.id.btm_Logout_btn);
+        TextView profilename = bottomSheetDialog.findViewById(R.id.btm_profilename);
         if (emailTextView != null) {
             emailTextView.setText(getInstance().getCurrentUser().getEmail());
+        }
+        if (profilename != null) {
+            profilename.setText(getInstance().getCurrentUser().getDisplayName());
         }
         logoutButton.setOnClickListener(new View.OnClickListener() {
                 @Override
