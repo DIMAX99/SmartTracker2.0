@@ -3605,6 +3605,7 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
+id taskcategory
 id taskdate
 id taskday
 id taskmonth
@@ -3872,7 +3873,6 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 layout task_layout
 layout taskadd_bottom_sheet
-layout updatetask_bottomsheet
 menu bottom_navigation_menu
 menu toolbar_optmenu
 mipmap ic_launcher

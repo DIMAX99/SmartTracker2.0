@@ -24,7 +24,7 @@ public class TaskReminderBroadcastReceiver extends BroadcastReceiver {
         }
         // Create and display a notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "task_reminder")
-                .setSmallIcon(R.drawable.default_profile_icon)
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentTitle("Task Reminder")
                 .setContentText("Task: " + taskName + " is due now.")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);

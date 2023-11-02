@@ -78,6 +78,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             holder.task.setChecked(false);
             holder.taskstatus.setText("Upcoming");
         }
+        holder.taskcategory.setText(db.getCategoryNameByTaskId(item.getId()));
         holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -131,6 +132,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         bundle.putString("Date", item.getDate());
         bundle.putString("Time", item.getTime());
         bundle.putLong("categoryId", item.getCategoryId());
+        bundle.putString("category", db.getCategoryNameByTaskId(item.getId()));
         AddNewTask fragment = new AddNewTask();
         fragment.setArguments(bundle);
         fragment.show(activity.getSupportFragmentManager(), AddNewTask.TAG);
@@ -143,6 +145,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         TextView taskdate;
         TextView taskmonth;
         TextView taskstatus;
+        TextView taskcategory;
 
 
         ViewHolder(View view) {
@@ -153,6 +156,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             taskday = view.findViewById(R.id.taskday);
             taskmonth = view.findViewById(R.id.taskmonth);
             taskstatus = view.findViewById(R.id.taskstatus);
+            taskcategory = view.findViewById(R.id.taskcategory);
         }
     }
 }

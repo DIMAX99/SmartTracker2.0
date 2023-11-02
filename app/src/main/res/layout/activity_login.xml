@@ -8,8 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".Login">
 
-
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
@@ -32,6 +30,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="50dp"
                 android:text="LOGIN"
+                android:fontFamily="@font/robotomono_semibold"
                 android:textColor="@color/white"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -45,6 +44,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
+                android:fontFamily="@font/robotomono_regular"
                 android:background="@drawable/login_details"
                 android:drawableLeft="@drawable/login_mail"
                 android:drawablePadding="10dp"
@@ -60,6 +60,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
+                android:fontFamily="@font/robotomono_regular"
                 android:background="@drawable/login_details"
                 android:drawableLeft="@drawable/login_password"
                 android:drawablePadding="10dp"
@@ -71,10 +72,11 @@
                android:id="@+id/forgot_password"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:textColor="@color/colorPrimary"
+               android:textColor="@color/colorAccent"
                android:text="Forgot Password?"
                android:layout_marginStart="20dp"
                android:layout_marginTop="5dp"
+               android:fontFamily="@font/robotomono_regular"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintTop_toBottomOf="@+id/login_password"/>
             <androidx.appcompat.widget.AppCompatButton
@@ -83,8 +85,9 @@
                 android:layout_height="50dp"
                 android:background="@color/white"
                 android:text="LOGIN"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/appblue"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/robotomono_semibold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/forgot_password"/>
@@ -97,6 +100,7 @@
                 android:textSize="20sp"
                 android:text="-------OR-------"
                 android:textColor="@color/white"
+                android:fontFamily="@font/robotomono_semibold"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +110,7 @@
                 android:layout_width="250dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="10dp"
-                android:drawableStart="@drawable/common_google_signin_btn_icon_light"
+                android:drawableStart="@drawable/common_google_signin_btn_icon_dark_focused"
                 app:layout_constraintTop_toBottomOf="@+id/or"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -131,12 +135,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/login_page_appname">
-            <ImageView
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:src="@drawable/app_name"
-                android:scaleType="fitCenter"/>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotomono_semibold"
+                android:text="@string/app_name"
+                android:textAlignment="center"
+                android:textColor="@color/appblue"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

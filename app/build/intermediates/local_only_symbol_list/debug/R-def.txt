@@ -83,6 +83,7 @@ id or
 id showcategory
 id showdate
 id showtime
+id taskcategory
 id taskdate
 id taskday
 id taskmonth
@@ -101,7 +102,6 @@ layout bottom_sheet_layout
 layout category_layout
 layout task_layout
 layout taskadd_bottom_sheet
-layout updatetask_bottomsheet
 menu bottom_navigation_menu
 menu toolbar_optmenu
 mipmap ic_launcher

@@ -20,6 +20,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.smarttracker.Adapters.CategoryAdapter;
+import com.example.smarttracker.Adapters.TaskAdapter;
 import com.example.smarttracker.Model.TaskModel;
 import com.example.smarttracker.Utils.DatabaseHandler;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -36,12 +38,12 @@ public class AddNewTask extends BottomSheetDialogFragment {
     private Button SetTime;
     private Button AddTask;
     private DatabaseHandler dbHandler;
-    private long taskId = -1;
-
     private TextView showdate;
    private TextView showtime;
     private String finalDate;
     private String finalTime;
+    private CategoryAdapter categoryAdapter;
+    private TaskAdapter taskAdapter;
     public static AddNewTask newInstance(){
         return new AddNewTask();
     }
@@ -73,6 +75,20 @@ public class AddNewTask extends BottomSheetDialogFragment {
         showtime = view.findViewById(R.id.showtime);
         AddTask = view.findViewById(R.id.newTaskButton);
 
+        boolean isUpdate = false;
+        final Bundle bundle = getArguments();
+        if(bundle != null){
+            isUpdate = true;
+            long taskid = bundle.getLong("id");
+            String taskname = bundle.getString("task");
+            String taskdate = bundle.getString("Date");
+            String tasktime = bundle.getString("Time");
+            String category = bundle.getString("category");
+            editTaskName.setText(taskname);
+            showdate.setText(taskdate);
+            showtime.setText(tasktime);
+            editCategory.setText(category);
+        }
 
 
         SetDate.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +105,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
         });
 
 
+        boolean finalIsUpdate = isUpdate;
         AddTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,17 +114,20 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 String Date = finalDate.toString();
                 String Time = finalTime.toString();
 
+                    if(finalIsUpdate){
+                        dbHandler.updateTask(bundle.getInt("id"),TaskName,Date,Time,TaskCategory,0);
+                    }
+                    else {
+                        TaskModel newTask = new TaskModel();
 
-                    TaskModel newTask = new TaskModel();
-
-                    newTask.setName(TaskName);
-                    newTask.setDate(Date);
-                    newTask.setTime(Time);
-                    newTask.setStatus(0);
+                        newTask.setName(TaskName);
+                        newTask.setDate(Date);
+                        newTask.setTime(Time);
+                        newTask.setStatus(0);
 
 
-                    dbHandler.addTask(newTask, TaskCategory);
-
+                        dbHandler.addTask(newTask, TaskCategory);
+                    }
                 Log.d("taskadded","done");
                 dismiss();
             }

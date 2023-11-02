@@ -14,7 +14,7 @@
     <color name="white">#FFFFFFFF</color>
     <string name="add_date">Add date</string>
     <string name="add_task">add task</string>
-    <string name="app_name">SmartTracker</string>
+    <string name="app_name">DeadlineTracker</string>
     <string name="default_web_client_id" translatable="false">983652194517-npsmtsupn04qm1e4r30g1g2l2g1nb60i.apps.googleusercontent.com</string>
     <string name="gcm_defaultSenderId" translatable="false">983652194517</string>
     <string name="google_api_key" translatable="false">AIzaSyAGtMwYVJ0q4uAibfD_bZzIaFIK63gTlG4</string>

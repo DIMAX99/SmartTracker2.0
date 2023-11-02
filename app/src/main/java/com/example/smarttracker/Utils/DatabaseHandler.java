@@ -230,26 +230,6 @@ public class DatabaseHandler{
         database.update(TaskParams.TASK_TABLE_NAME, cv, TaskParams.TASK_COLUMN_ID + "= ?",
                 new String[] {String.valueOf(id)});
     }
-    public int updateTask(long taskId, String name, String date, String time, String categoryName, int status) {
-        // Retrieve the category ID based on the category name
-        ContentValues values = new ContentValues();
-        values.put(TaskParams.TASK_COLUMN_NAME, name);
-        values.put(TaskParams.TASK_COLUMN_Date, date);
-        values.put(TaskParams.TASK_COLUMN_Time, time);
-        if (categoryName != null && !categoryName.isEmpty()) {
-            long categoryId = getCategoryId(categoryName);
-            values.put(TaskParams.COLUMN_TASK_CATEGORY_ID, categoryId);
-        } else {
-            values.putNull(TaskParams.COLUMN_TASK_CATEGORY_ID);
-        }
-        values.put(TaskParams.TASK_COLUMN_STATUS, status);
-
-        String whereClause = TaskParams.TASK_COLUMN_ID + "=?";
-        String[] whereArgs = {String.valueOf(taskId)};
-
-        return database.update(TaskParams.TASK_TABLE_NAME, values, whereClause, whereArgs);
-    }
-
     public int updateCategory(long categoryId, String newName) {
         ContentValues values = new ContentValues();
         values.put(TaskParams.COLUMN_CATEGORY_NAME, newName);
@@ -354,6 +334,106 @@ public class DatabaseHandler{
 
         return isEmpty;
     }
+    public String getCategoryNameByTaskId(long taskId) {
+        Cursor cursor = database.query(
+                TaskParams.TASK_TABLE_NAME,
+                new String[]{TaskParams.COLUMN_TASK_CATEGORY_ID},
+                TaskParams.TASK_COLUMN_ID + "=?",
+                new String[]{String.valueOf(taskId)},
+                null,
+                null,
+                null
+        );
+
+        String categoryName = null;
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                @SuppressLint("Range") long categoryId = cursor.getLong(cursor.getColumnIndex(TaskParams.COLUMN_TASK_CATEGORY_ID));
+                categoryName = getCategoryNameById(categoryId);
+            }
+            cursor.close();
+        }
+
+        return categoryName;
+    }
+    public int updateTask(long taskId, String name, String date, String time, String categoryName, int status) {
+        database.beginTransaction();
+        try {
+            // Step 1: Retrieve the old category ID based on the task ID
+            long oldCategoryId = getTaskCategoryId(taskId);
+
+            // Step 2: Update the task with the new data, including the category
+            ContentValues values = new ContentValues();
+            values.put(TaskParams.TASK_COLUMN_NAME, name);
+            values.put(TaskParams.TASK_COLUMN_Date, date);
+            values.put(TaskParams.TASK_COLUMN_Time, time);
+
+            if (!TextUtils.isEmpty(categoryName)) {
+                Cursor cursor = database.query(TaskParams.CATEGORY_TABLE_NAME, new String[]{TaskParams.COLUMN_CATEGORY_ID}, TaskParams.COLUMN_CATEGORY_NAME + "=?", new String[]{categoryName}, null, null, null);
+                if (cursor.moveToFirst()) {
+                    @SuppressLint("Range") int categoryId = cursor.getInt(cursor.getColumnIndex(TaskParams.COLUMN_CATEGORY_ID));
+                    values.put(TaskParams.COLUMN_TASK_CATEGORY_ID, categoryId);
+                } else {
+                    ContentValues categoryValues = new ContentValues();
+                    categoryValues.put(TaskParams.COLUMN_CATEGORY_NAME, categoryName);
+                    long newCategoryId = database.insert(TaskParams.CATEGORY_TABLE_NAME, null, categoryValues);
+                   values.put(TaskParams.COLUMN_TASK_CATEGORY_ID, newCategoryId);
+                }
+                cursor.close();
+            }
+
+            values.put(TaskParams.TASK_COLUMN_STATUS, status);
+
+            String whereClause = TaskParams.TASK_COLUMN_ID + "=?";
+            String[] whereArgs = {String.valueOf(taskId)};
+
+            int rowsUpdated = database.update(TaskParams.TASK_TABLE_NAME, values, whereClause, whereArgs);
+
+            // Step 3: Check if the old category has any tasks left
+            boolean isOldCategoryEmpty = isCategoryEmpty(oldCategoryId);
+
+            // Step 4: If the old category has no tasks left, delete it
+            if (isOldCategoryEmpty) {
+                String categoryWhereClause = TaskParams.COLUMN_CATEGORY_ID + "=?";
+                String[] categoryWhereArgs = {String.valueOf(oldCategoryId)};
+                database.delete(TaskParams.CATEGORY_TABLE_NAME, categoryWhereClause, categoryWhereArgs);
+            }
+
+            // Step 5: Set the transaction as successful
+            database.setTransactionSuccessful();
+            if(taskId!=-1){
+                scheduleTaskReminder(taskId, name, date, time, 30);
+            }
+            return rowsUpdated;
+        } finally {
+            // Step 6: End the transaction on the database
+            database.endTransaction();
+        }
+
+    }
+    @SuppressLint("Range")
+    public String getCategoryNameById(long categoryId) {
+        Cursor cursor = database.query(
+                TaskParams.CATEGORY_TABLE_NAME,
+                new String[]{TaskParams.COLUMN_CATEGORY_NAME},
+                TaskParams.COLUMN_CATEGORY_ID + "=?",
+                new String[]{String.valueOf(categoryId)},
+                null,
+                null,
+                null
+        );
+
+        String categoryName = null;
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                categoryName = cursor.getString(cursor.getColumnIndex(TaskParams.COLUMN_CATEGORY_NAME));
+            }
+            cursor.close();
+        }
+
+        return categoryName;
+    }
+
 
 
 }

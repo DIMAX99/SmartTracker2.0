@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SmartTracker</string>
+    <string name="app_name">DeadlineTracker</string>
     <string name="welcome_to_smarttracker">Welcome to SmartTracker!</string>
     <string name="default_web_client_id">983652194517-npsmtsupn04qm1e4r30g1g2l2g1nb60i.apps.googleusercontent.com</string>
     <string name="add_task">add task</string>

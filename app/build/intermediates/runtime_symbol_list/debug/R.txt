@@ -3604,6 +3604,7 @@ int id tag_transition_group 0x7f0901e4
 int id tag_unhandled_key_event_manager 0x7f0901e5
 int id tag_unhandled_key_listeners 0x7f0901e6
 int id tag_window_insets_animation_callback 0x7f0901e7
+int id taskcategory 0x7f090230
 int id taskdate 0x7f09022b
 int id taskday 0x7f09022c
 int id taskmonth 0x7f09022d
@@ -3871,7 +3872,6 @@ int layout select_dialog_singlechoice_material 0x7f0c0071
 int layout support_simple_spinner_dropdown_item 0x7f0c0072
 int layout task_layout 0x7f0c0073
 int layout taskadd_bottom_sheet 0x7f0c0074
-int layout updatetask_bottomsheet 0x7f0c0075
 int menu bottom_navigation_menu 0x7f0e0000
 int menu toolbar_optmenu 0x7f0e0001
 int mipmap ic_launcher 0x7f0f0000
