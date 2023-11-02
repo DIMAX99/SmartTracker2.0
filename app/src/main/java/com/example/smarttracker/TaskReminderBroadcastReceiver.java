@@ -27,7 +27,7 @@ public class TaskReminderBroadcastReceiver extends BroadcastReceiver {
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentTitle("Task Reminder")
                 .setContentText("Task: " + taskName + " is due now.")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                .setPriority(NotificationCompat.PRIORITY_HIGH);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         notificationManager.notify(0, builder.build());
         Log.d("set alarm","taskmreminderworkdone");

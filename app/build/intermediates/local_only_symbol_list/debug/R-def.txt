@@ -44,6 +44,7 @@ drawable logoutbutton_bottom
 drawable question
 drawable set_time_icon
 drawable settings
+drawable task_list
 drawable taskdetails
 drawable test
 font robotomono_regular
@@ -77,8 +78,6 @@ id login_password
 id main_toolbar
 id newTaskButton
 id newTaskText
-id opt_help
-id opt_settings
 id or
 id showcategory
 id showdate

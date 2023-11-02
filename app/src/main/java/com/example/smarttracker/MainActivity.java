@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
     TextView Username;
     TextView Email;
     ImageView profile;
+
     private RecyclerView tasksRecyclerView;
     private RecyclerView categoryRecyclerView;
     private TaskAdapter taskAdapter;
@@ -98,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
                 AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG);
             }
         });
+
 
     }
 

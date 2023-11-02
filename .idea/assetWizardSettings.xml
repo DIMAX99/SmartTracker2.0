@@ -311,9 +311,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="3ba4bc" />
-                            <entry key="outputName" value="set_time_icon" />
-                            <entry key="sourceFile" value="C:\Users\divit\Downloads\profile-user-svgrepo-com.svg" />
+                            <entry key="outputName" value="task_list" />
+                            <entry key="sourceFile" value="C:\Users\divit\Downloads\task-list.svg" />
                           </map>
                         </option>
                       </PersistentState>

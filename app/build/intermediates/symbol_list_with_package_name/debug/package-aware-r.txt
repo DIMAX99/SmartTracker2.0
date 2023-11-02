@@ -3105,6 +3105,7 @@ drawable question
 drawable selection_band_overlay
 drawable set_time_icon
 drawable settings
+drawable task_list
 drawable taskdetails
 drawable test
 drawable test_level_drawable
@@ -3476,8 +3477,6 @@ id notification_main_column_container
 id off
 id on
 id onInterceptTouchReturnSwipe
-id opt_help
-id opt_settings
 id or
 id outline
 id outward
